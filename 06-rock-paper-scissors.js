@@ -3,16 +3,32 @@ const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const reset = document.querySelector(".reset");
 const scoreEl = document.querySelector(".score");
+let result = document.querySelector('.js-result');
+
+
+const updateScore = function(){
+  document.querySelector(
+    ".score"
+  ).textContent = `Wins: ${score.wins} Losses: ${score.losses} Tie:${score.ties}`;
+}
+
 
 let random = 0;
 let personMove = "";
 let computerMove = "";
-let result = "";
+
 let score = JSON.parse(localStorage.getItem("score")) || {
   wins: 0,
   losses: 0,
   ties: 0
 };
+
+updateScore();
+
+const displayMoves = function(){
+  let moves = document.querySelector('.js-moves');
+  moves.textContent = `You ${personMove} - ${computerMove} computer`;
+}
 
 const randomNumber = function () {
   random = Math.random();
@@ -32,55 +48,49 @@ const displayComputerMove = function () {
 
 const displayResult = function () {
   if (computerMove === personMove) {
-    result = "Tie";
+    result.textContent = "Tie";
     (score.ties += 1);
   } else if (
     (computerMove === "paper" && personMove === "scissors") ||
     (computerMove === "rock" && personMove === "paper") ||
     (computerMove === "scissors" && personMove === "rock")
   ) {
-    result = "You Win";
+    result.textContent = "You Win";
     (score.wins += 1);
   } else {
-    result = "You Lose";
+    result.textContent = "You Lose";
     (score.losses += 1);
   }
   localStorage.setItem("score", JSON.stringify(score));
-};
 
-
-
-const messageAlert = function () {
-  alert(`you picked ${personMove}. Computer picked ${computerMove}. ${result}. 
-  Wins:${score.wins} Losses:${score.losses} Ties:${score.ties}`);
-
-  document.querySelector(
-    ".score"
-  ).textContent = `Wins: ${score.wins} Losses: ${score.losses} Tie:${score.ties}`;
+  updateScore();
 };
 
 rock.addEventListener("click", function () {
-  personMove = "rock";
+  personMove = "rock"
+  displayMoves();
   randomNumber();
   displayComputerMove(random);
   displayResult();
-  messageAlert();
+
 });
 
 paper.addEventListener("click", function () {
-  personMove = "paper";
+  personMove = "paper"
+  displayMoves();
   randomNumber();
   displayComputerMove(random);
   displayResult();
-  messageAlert();
+
 });
 
 scissors.addEventListener("click", function () {
-  personMove = "scissors";
+  personMove = "scissors"
+  displayMoves();
   randomNumber();
   displayComputerMove(random);
   displayResult();
-  messageAlert();
+
 });
 
 reset.addEventListener("click", function () {
@@ -89,6 +99,7 @@ reset.addEventListener("click", function () {
     losses: 0,
     ties: 0,
   };
-  localStorage.removeItem('score')
+  localStorage.removeItem('score');
+  updateScore();
 });
 
