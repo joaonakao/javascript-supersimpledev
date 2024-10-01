@@ -4,12 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booleans</title>
+    <style>
+      body{
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .move-button{
+        background-color: transparent;
+      }
+    </style>
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
+    <button class="rock move-button"><img src="rock-emoji.png" alt="rock"></button>
+    <button class="paper move-button"><img src="paper-emoji.png" alt="paper"></button>
+    <button class="scissors move-button"><img src="scissors-emoji.png" alt="scissors"></button>
     <p class="js-result"></p>
     <p class="js-moves">you scissors - rock computer</p>
     <div class="score"></div>
