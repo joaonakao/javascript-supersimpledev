@@ -5,24 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booleans</title>
     <style>
-      body{
+      body {
         background-color: black;
         color: white;
         font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
       }
 
-      .move-button{
-        background-color: transparent;
+      .move-button {
+        background-color: transparent; 
+        border-width: 2px;
+        border-style: solid;
+        border-color: white;
+        border-radius: 100px;
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        }
+
+      .move-icon {
+        height: 50px;
+      }
+
+      .rock {
+
       }
     </style>
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
-    <button class="rock move-button"><img src="rock-emoji.png" alt="rock"></button>
-    <button class="paper move-button"><img src="paper-emoji.png" alt="paper"></button>
-    <button class="scissors move-button"><img src="scissors-emoji.png" alt="scissors"></button>
+    <button class="rock move-button"><img src="rock-emoji.png" alt="rock" class="move-icon"></button>
+    <button class="paper move-button"><img src="paper-emoji.png" alt="paper" class="move-icon"></button>
+    <button class="scissors move-button"><img src="scissors-emoji.png" alt="scissors" class="move-icon"></button>
     <p class="js-result"></p>
-    <p class="js-moves">you scissors - rock computer</p>
+    <p class="js-moves">
+      <img src="rock-emoji.png" alt="" class="move-icon">
+      <img src="scissors-emoji.png" alt="" class="move-icon">
+    </p>
     <div class="score"></div>
     <button class="reset">Reset Score</button>
 

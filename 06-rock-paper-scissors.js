@@ -72,7 +72,6 @@ rock.addEventListener("click", function () {
   randomNumber();
   displayComputerMove(random);
   displayResult();
-
 });
 
 paper.addEventListener("click", function () {
