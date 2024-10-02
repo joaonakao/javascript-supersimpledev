@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <h1>To do list practice 1</h1>
+    <input type="text" class="js-input1" placeholder="to do">
+    <input type="date" class="js-due-date-input">
+    <button class="js-button1">Add</button>
+    <div class="todo1"></div>
+
+    <script>
+        const button1 = document.querySelector('.js-button1');
+        const todoEl = document.querySelector('.todo1');
+        let todo1 = []; // Iniciar vazio
+
+        // Adiciona nova tarefa
+        button1.addEventListener('click', function() {
+            const input1 = document.querySelector('.js-input1');
+            const task = input1.value.trim(); 
+            
+            const dateInputElement = document.querySelector('.js-due-date-input');
+            const dueDate = dateInputElement.value;
+
+            // Verifica se o campo de tarefa e data estão preenchidos
+            if (task && dueDate) {
+                todo1.push({
+                    name: task,
+                    dueDate: dueDate
+                });
+                input1.value = ''; // Limpar o campo de entrada de tarefa
+                dateInputElement.value = ''; // Limpar o campo de data
+                updateTodoList();
+            }
+        });
+
+        // Atualiza a lista de tarefas com botões de deletar
+        function updateTodoList() {
+            let todoHTML = ''; 
+            todo1.forEach((todo, index) => {
+                todoHTML += `<p>${todo.name} (Due: ${todo.dueDate}) 
+                             <button class="delete-button" data-index="${index}">Delete</button></p>`;
+            });
+            todoEl.innerHTML = todoHTML;
+
+            // Associa evento de clique a cada botão de deletar
+            document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    todo1.splice(index, 1);  // Remove o item pelo índice
+                    updateTodoList(); // Atualiza a lista
+                });
+            });
+        }
+    </script>
+</body>
+</html>
