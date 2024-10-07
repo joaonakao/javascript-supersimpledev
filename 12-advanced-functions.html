@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <script>
+      //hoisting: call function before creating. so pode usar hoisting quando nao atribuimos uma variavel na funçao.
+      greeting();
+       function greeting(){
+            console.log('hello');
+        }
+
+      //functions are values just like number, string or boolean.
+      const function1 = function () {
+        //anonymus functions
+        console.log("hello2");
+      };
+    
+      console.log(function1);
+      console.log(typeof function1);
+      function1();
+
+      const object1 = {
+        num: 2,
+        fun: function (){
+            console.log('hello3');
+        }
+      }
+      object1.fun();
+
+      //passing a value into a function
+      function display(param){
+        console.log(param);
+      }
+
+      display('hello4');
+
+      //passing a function into another function
+      function run(param){
+        param();
+      }
+      run(function(){
+        console.log('hello5');
+      })
+
+      //asynchronous code: nao esperara a linha terminar para seguir para a proxima
+      setTimeout(function(){
+        console.log('timeout');
+      }, 3000); // 3 seconds
+
+      console.log('next line');
+      
+    </script>
+  </body>
+</html>

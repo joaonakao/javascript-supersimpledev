@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <style>
+        
+        .todo1, .todo-input-grid{
+            display: grid;
+            grid-template-columns: 200px 150px 100px;
+            column-gap: 10px;
+            row-gap: 10px;
+        }
+
+        .todo-input-grid{
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>To do list practice 1</h1>
+    <div class="todo-input-grid">
     <input type="text" class="js-input1" placeholder="to do">
     <input type="date" class="js-due-date-input">
     <button class="js-button1">Add</button>
+    </div>
     <div class="todo1"></div>
 
     <script>
@@ -41,8 +56,10 @@
         function updateTodoList() {
             let todoHTML = ''; 
             todo1.forEach((todo, index) => {
-                todoHTML += `<p>${todo.name} (Due: ${todo.dueDate}) 
-                             <button class="delete-button" data-index="${index}">Delete</button></p>`;
+                todoHTML += `
+                <div>${todo.name}</div> 
+                <div>(Due: ${todo.dueDate})</div>
+                <button class="delete-button" data-index="${index}">Delete</button>`;
             });
             todoEl.innerHTML = todoHTML;
 
